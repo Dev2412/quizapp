@@ -1,0 +1,8 @@
+body{
+    background-color: aqua;
+}
+button{
+    height: 50px;
+    border-radius: 25%;
+    font-weight: bolder;
+}

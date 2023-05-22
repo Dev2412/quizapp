@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="wd6.css">
+    <title>Document</title>
+</head>
+<body>
+    <center><h1>JavaScript Quiz</h1></center>
+<div id="quiz"></div>
+<center><button onclick="submitQuiz()">Submit Quiz</button></center>
+<script>
+    // Define the quiz questions and options
+var quiz = [
+  {
+    question: "What is the capital of India?",
+    options: ["Delhi", "London", "Madrid", "Berlin"],
+    answer: "Delhi"
+  },
+  {
+    question: "What is the highest mountain in the world?",
+    options: [
+      "Mount Everest",
+      "Mount Kilimanjaro",
+      "Mount McKinley",
+      "Mount Fuji"
+    ],
+    answer: "Mount Everest"
+  },
+  {
+  question: "Who created Javascript?",
+    options: [
+      "Brendan Eich",
+      "Charles Babbage",
+      "Tom Cruise",
+      "Madam Curie"
+    ],
+    answer: "Brendan Eich"
+  },
+  {
+    question: "What is the national animal of India?",
+    options: [
+      "Tiger",
+      "Lion",
+      "Monkey",
+      "Elephant"
+    ],
+    answer: "Tiger"
+  },
+  {
+    question: "Who wrote the Mahabharat?",
+    options: [
+      "Stephenie Meyer",
+      "Vyasa",
+      "Suzanne Collins",
+      "Veronica Roth"
+    ],
+    answer: "Vyasa"
+  }
+];
+
+// Display the quiz questions and options
+function displayQuiz() {
+  var quizHTML = "";
+  for (var i = 0; i < quiz.length; i++) {
+    quizHTML += "<h2>" + quiz[i].question + "</h2>";
+    for (var j = 0; j < quiz[i].options.length; j++) {
+      quizHTML +=
+        "<input type='radio' name='question" +
+        i +
+        "' value='" +
+        quiz[i].options[j] +
+        "'>";
+      quizHTML += quiz[i].options[j] + "<br>";
+    }
+  }
+  document.getElementById("quiz").innerHTML = quizHTML;
+}
+
+// Check the quiz answers and display the score
+function submitQuiz() {
+  var score = 0;
+  for (var i = 0; i < quiz.length; i++) {
+    var selectedOption = document.querySelector(
+      'input[name="question' + i + '"]:checked'
+    ).value;
+    if (selectedOption === quiz[i].answer) {
+      score++;
+    }
+  }
+  alert("You scored " + score + " out of " + quiz.length + "!");
+  if(score>=3){
+    alert("you are winner");
+  }
+  else{
+    alert("you lost");
+  }
+}
+
+// Display the quiz when the page loads
+window.onload = displayQuiz;
+
+</script>
+</body>
+</html>
